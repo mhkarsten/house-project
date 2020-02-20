@@ -354,3 +354,5 @@ MigrationBackup/
 .ionide/
 
 virtualenv/
+
+.idea/workspace.xml
