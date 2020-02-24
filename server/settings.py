@@ -27,7 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1', 'localhost:27017']
 
-
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000/'
+)
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'house_model'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,10 +81,11 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'test',
+        'NAME': 'house-model',
         'HOST': 'mongodb+srv://dbAdmin:DcI0WSaYiwgSaBPL@house-project-9g5fo.gcp.mongodb.net/test?retryWrites=true&w=majority',
         'USER': 'dbAdmin',
         'PASSWORD': 'DcI0WSaYiwgSaBPL',
+        'ENFORCE_SCHEMA': True
     }
 }
 
