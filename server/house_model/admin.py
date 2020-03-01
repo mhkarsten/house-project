@@ -1,12 +1,5 @@
 from django.contrib import admin
+from .models import User, Message, Build, BuildLog
 
-from house_model.models import message 
-from house_model.models import user
-from house_model.models import build
-# Register your models here.
+admin.site.register([User, Message, Build, BuildLog])
 
-
-admin.site.register(message.Message)
-admin.site.register(user.User)
-admin.site.register(build.Build)
-admin.site.register(build.Builds)
