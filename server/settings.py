@@ -25,11 +25,9 @@ SECRET_KEY = '9#rrx+h#_&-6yr)r+@p(mhht)vc-o3y3w9r#k088dejqxid!52'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1', 'localhost:27017']
+ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1']
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'
-)
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,13 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admindocs',
-    'house_model'
+    'graphene_django',
+    'server.house_model'
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,15 +77,14 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'house-model',
-        'HOST': 'mongodb+srv://dbAdmin:DcI0WSaYiwgSaBPL@house-project-9g5fo.gcp.mongodb.net/test?retryWrites=true&w=majority',
-        'USER': 'dbAdmin',
-        'PASSWORD': 'DcI0WSaYiwgSaBPL',
-        'ENFORCE_SCHEMA': True
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
+GRAPHENE = {
+    'SCHEMA': 'django_root.schema.schema'
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
