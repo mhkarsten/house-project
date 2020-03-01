@@ -1,4 +1,5 @@
 from djongo import models
+import graphene
 # Create your models here.
 
 class Message(models.Model):
@@ -17,8 +18,7 @@ class Build(models.Model):
     description = models.TextField()
     source = models.CharField(max_length=50) # User
 
-    def __str__(self):
-        return self.id
+    
 
 class BuildLog(models.Model):
     log_name = models.CharField(max_length=100)
@@ -43,9 +43,14 @@ class User(models.Model):
     builds = models.ArrayField(
         model_container = Build
     )
-    messages = models.EmbeddedField(
+    messages = models.ArrayField(
         model_container= Message
     )
 
     def __str__(self):
         return self.name
+
+class Query(graphene.ObjectType):
+    pass
+
+schema = graphene.Schema(query=Query)
