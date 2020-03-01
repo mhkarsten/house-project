@@ -1,0 +1,17 @@
+.loginForm {
+    margin-top: 15%;
+    margin-left: 30vw;
+    // background-color: red;
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    align-items: center;
+    
+    h2 {
+        text-align: center;
+    }
+
+    .upField {
+        width: 80%;
+    }
+}

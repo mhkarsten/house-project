@@ -12,17 +12,19 @@ import Builds from './pages/builds'
 import ProtectedRoute from './components/protectedRoute'
 import NotFound from './pages/notFound'
 
-// function requireAuth() {
-//   if() {
+function requireAuth() {
+  // if() {
 
-//   }
-// }
+  // }
+}
 
 function App() {
   return (
     <Router>
         <Switch>
-          <Route path='/login' component={Login}/>
+          <Redirect exact from="/" to="/login" />
+          <Route path='/login' component={Login} onEnter={requireAuth}/>
+          <Route path='*' component={NotFound}/>
           <ProtectedRoute path='/home' component={Home}/>
           <ProtectedRoute path='/builds' component={Builds}/>
         </Switch>
