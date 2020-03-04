@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route,
   Redirect
@@ -11,6 +11,7 @@ import Login from './pages/login'
 import Builds from './pages/builds'
 import ProtectedRoute from './components/protectedRoute'
 import NotFound from './pages/notFound'
+import { history } from './store'
 
 function requireAuth() {
   // if() {
@@ -20,11 +21,11 @@ function requireAuth() {
 
 function App() {
   return (
-    <Router>
+    <Router history={history}>
         <Switch>
           <Redirect exact from="/" to="/login" />
           <Route path='/login' component={Login} onEnter={requireAuth}/>
-          <Route path='*' component={NotFound}/>
+          {/* <Route path='*' component={NotFound}/> */}
           <ProtectedRoute path='/home' component={Home}/>
           <ProtectedRoute path='/builds' component={Builds}/>
         </Switch>
