@@ -1,28 +1,33 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import { connect } from 'react-redux';
+import '../style/builds.scss'
 
 class Builds extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+
+        }
     }
 
     render () {
         return (
-            <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/home">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/builds">Builds</Link>
-                        </li>
-                    </ul>
-                </nav>
-                This is the home page
-            </div>
+            <main className='buildBody'>
+                <div>
+                    My Builds
+                </div>
+                <div>
+                    Main Build Log
+                </div>
+            </main>
         );
     }
 }
 
-export default Builds
+const mapStateToProps = (state) => {
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps)(Builds);

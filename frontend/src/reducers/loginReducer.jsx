@@ -5,22 +5,28 @@ import { loginConstants } from '../actions/_constants'
 //newUser
 //wrong new user information
 
-const loginReducer = (state = {loggedIn: false}, action) => {
+const loginReducer = (state = {}, action) => {
     switch (action.type) {
         case loginConstants.LOGIN_REQUEST:
             return {
+                ...state,
                 loggingIn: true,
                 user: action.user
             };
         case loginConstants.LOGIN_SUCCESS:
             return {
+                ...state,
                 loggedIn: true,
                 user: action.user
             };
         case loginConstants.LOGIN_FAILURE:
-            return {};
+            return {
+                ...state
+            };
         case loginConstants.LOGOUT:
-            return {};
+            return {
+                ...state
+            };
         default:
             return state
     }

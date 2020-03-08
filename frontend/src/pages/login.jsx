@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button'
 
 import React from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 
 import '../style/login.scss'
 import { loginActions } from '../actions/loginActions'
@@ -51,10 +50,6 @@ class Login extends React.Component {
             </form>
         );
     }
-}
-
-Login.propTypes = {
-    userName: PropTypes.string,
 }
 
 const mapStateToProps = (state) => { //READ STATE

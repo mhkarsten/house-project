@@ -12,23 +12,19 @@ import Builds from './pages/builds'
 import ProtectedRoute from './components/protectedRoute'
 import NotFound from './pages/notFound'
 import { history } from './store'
-
-function requireAuth() {
-  // if() {
-
-  // }
-}
+import Nav from './components/nav'
 
 function App() {
   return (
     <Router history={history}>
-        <Switch>
-          <Redirect exact from="/" to="/login" />
-          <Route path='/login' component={Login} onEnter={requireAuth}/>
-          {/* <Route path='*' component={NotFound}/> */}
-          <ProtectedRoute path='/home' component={Home}/>
-          <ProtectedRoute path='/builds' component={Builds}/>
-        </Switch>
+      <Route path='/home' component={Nav}/>
+      <Switch>
+        <Redirect exact from="/" to="/login" />
+        <Route path='/login' component={Login}/>
+        <ProtectedRoute exact path='/home' component={Home}/>
+        <ProtectedRoute exact path='/home/builds' component={Builds}/>
+        <ProtectedRoute component={NotFound}/>
+      </Switch>
     </Router>
   );
 }

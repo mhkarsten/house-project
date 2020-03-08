@@ -1,6 +1,5 @@
 import {loginConstants} from './_constants';
-import { store, history } from '../store'
-import { push, replace } from 'react-router-redux'
+import { history } from '../store'
 
 export const loginActions = {
     login,
@@ -10,11 +9,12 @@ export const loginActions = {
 
 function login(userName, password) {
 
-    if (userName == 'admin' && password == 'pass') {
+    if (userName === 'admin' && password === 'pass') {
         history.push('/home')
+        sessionStorage.setItem('user', JSON.stringify('prestent'));
         return {type: loginConstants.LOGIN_SUCCESS}
     } else {
-        return {type: loginConstants.REGUSTER_FAILURE}
+        return {type: loginConstants.LOGIN_FAILURE}
     }
 }
 
@@ -23,5 +23,5 @@ function logout() {
 }
 
 function register(username, password) {
-    return 
+    return  {}
 }   

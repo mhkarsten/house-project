@@ -1,15 +1,12 @@
 import React from 'react'
-
+import '../style/not_found.scss'
 
 class Login extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render () {
         return (
-            <div>
-                This address does not exist!!
+            <div className='notText'>
+                This page does not exist!
             </div>
         );
     }

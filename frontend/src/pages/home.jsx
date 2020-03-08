@@ -1,28 +1,33 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import { connect } from 'react-redux';
+import '../style/home.scss'
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+
+        }
     }
 
     render () {
         return (
-            <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/home">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/builds">Builds</Link>
-                        </li>
-                    </ul>
-                </nav>
-                This is the home page
-            </div>
+            <main className='homeBody'>
+                <div>
+                    Event Log
+                </div>
+                <div>
+                    Message Board
+                </div>
+            </main>
         );
     }
 }
 
-export default Home
+const mapStateToProps = (state) => {
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps)(Home);

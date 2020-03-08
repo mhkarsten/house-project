@@ -5,6 +5,14 @@ import App from './app';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import { store } from './store'
+import { loginConstants } from './actions/_constants'
+
+
+const user = JSON.parse(sessionStorage.getItem('user'));
+
+if (user) {
+    store.dispatch({type: loginConstants.LOGIN_SUCCESS});
+}
 
 ReactDOM.render(  
     <Provider store={store}>
