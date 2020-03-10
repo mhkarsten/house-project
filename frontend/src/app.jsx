@@ -9,10 +9,10 @@ import './style/app.scss';
 import Home from './pages/home'
 import Login from './pages/login'
 import Builds from './pages/builds'
-import ProtectedRoute from './components/protectedRoute'
+import ProtectedRoute from './connected/protectedRoute'
 import NotFound from './pages/notFound'
 import { history } from './store'
-import Nav from './components/nav'
+import Nav from './connected/nav'
 
 function App() {
   return (
