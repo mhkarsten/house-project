@@ -14,7 +14,7 @@ const MessageBoard = (props) => {
                 {
                     messages.map((message, index) => {
                         return (
-                            <div className='message'>
+                            <div className='message' key={index}>
                                 <div>
                                     <Typography variant='subtitle2'>{message.sender}</Typography>
                                     <Typography variant='subtitle2'>{message.time}</Typography>

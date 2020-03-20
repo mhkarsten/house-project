@@ -9,3 +9,7 @@ export const loginConstants = {
 
     LOGOUT: 'USER_LOGOUT'
 }
+
+export const homeConstants = {
+    
+}
