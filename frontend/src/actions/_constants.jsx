@@ -11,5 +11,17 @@ export const loginConstants = {
 }
 
 export const homeConstants = {
+    STAT_NEW: 'STAT_NEW',
+    STAT_DELETE: 'STAT_DELETE',
+    STAT_INCREMENT: 'STAT_INCREMENT',
+    STAT_DECREMENT: 'STAT_DECREMENT',
+    STAT_SELECT: 'STAT_SELECT',
+    STAT_SUCCESS: 'STAT_SUCCESS',
+    STAT_FAILURE: 'STAT_FAILURE',
+
     
+    POST_NEW:'',
+    POST_EDIT:'',
+    POST_FAILURE: '',
+    POST_SUCCESS: ''
 }

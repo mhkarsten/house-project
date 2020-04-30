@@ -1,28 +1,62 @@
-// import { homeConstants } from './constants'
+import { homeConstants } from '../actions/_constants'
 
+const stats = [
+    {
+        name: "Corona cases",
+        checked: false,
+        value: 252432
+    },
+    {
+        name: "Joints Smoked",
+        checked: false,
+        value: 420
+    },
+    {
+        name: "Fucks Given",
+        checked: false,
+        value: 0
+    }
+]
 
-// 187g flour 
+const messages = [
+    {
+        sender: 'Daniel',
+        time: '12/3/19',
+        body: 'Hugo is gay!'
+    },
+    {
+        sender: 'Peter',
+        time: '24/8/17',
+        body: 'Hugo is gay!'
+    },
+    {
+        sender: 'Hugo',
+        time: '12/3/99',
+        body: 'Hugo is gay!'
+    }
+]
 
-
-const homeConstants = {
-    STAT_NEW: '',
-    STAT_DELETE: '',
-    STAT_INCREMENT:'',
-    STAT_DECREMENT:'',
-    STAT_SELECT:'',
-
-    POST_NEW:'',
-    POST_EDIT:'', 
-}
-const homeReducer = (state={}, action) => {
+const homeReducer = (state={stats:[]}, action) => {
     switch(action.type) {
         case homeConstants.STAT_NEW:
             return {
-                ...state
+                ...state,
+                stats: [
+                    ...state.stats,
+                    {
+                        ...action.stat
+                    }
+                ]
             }
         case homeConstants.STAT_DELETE:
             return {
                 ...state
+            }
+        case homeConstants.STAT_SELECT:
+            console.log(action)
+            return {
+                ...state,
+                [action.statName]: !action.checked
             }
         case homeConstants.STAT_INCREMENT:
             return {

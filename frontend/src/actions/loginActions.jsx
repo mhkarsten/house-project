@@ -1,4 +1,4 @@
-import {loginConstants} from './_constants';
+import { loginConstants } from './_constants';
 import { history } from '../store'
 
 export const loginActions = {
