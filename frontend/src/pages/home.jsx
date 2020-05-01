@@ -12,8 +12,6 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            messages: messages,
-            stats: stats
         }
     }
 
@@ -24,11 +22,11 @@ class Home extends React.Component {
                 <div>
                     <Typography variant='h3'>Stats</Typography>
                     <div className='statsBody'>
-                        <Stats stats = {this.state.stats}/>
+                        <Stats stats = {this.props.stats}/>
                     </div>
                     <Typography variant='h3'>Message Board</Typography>
                     <div className='messageBody'>
-                        <MessageBoard messages={this.state.messages}/>
+                        <MessageBoard messages={this.props.messages}/>
                     </div>
                 </div>
             </main>
@@ -38,7 +36,8 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-
+        messages: state.homeReducer.messages,
+        stats: state.homeReducer.stats
     }
 }
 

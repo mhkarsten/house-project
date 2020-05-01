@@ -6,7 +6,6 @@ import {homeActions} from '../actions/homeActions'
 
 const Stats = (props) => {
     const [stats, dispatch] = useReducer(homeReducer, props.stats)
-
     function increase(event) {
         dispatch(homeActions.incrementStats())
     }
@@ -15,7 +14,7 @@ const Stats = (props) => {
 
     }
 
-    function selectState(event) {
+    function selectStat(event) {
         dispatch(homeActions.selectStat(event.target.name, event.target.checked))
     }
 
@@ -52,19 +51,19 @@ const Stats = (props) => {
             </div>
             <FormGroup className='statsBox'>
             {
-                props.stats.map((stat, index) => {
+                Object.entries(stats).map((stat, index) => {
                     return (
                         <div className='stat'>
-                            <Typography>{stat.value}</Typography>
+                            <Typography>{stat[1].value}</Typography>
                             <FormControlLabel
                                 control = {
                                     <Checkbox
-                                        checked={stat.checked}
-                                        onChange={addStatToList}
-                                        name={stat.name}
+                                        checked={stat[1].checked}
+                                        onChange={selectStat}
+                                        name={stat[0]}
                                     />
                                 }
-                                label={stat.name}
+                                label={stat[0]}
                                 key={index}
                             />
                         </div>

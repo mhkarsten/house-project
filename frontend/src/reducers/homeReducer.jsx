@@ -1,22 +1,19 @@
 import { homeConstants } from '../actions/_constants'
 
-const stats = [
-    {
-        name: "Corona cases",
+const stats = {
+    'Corona Cases':{
         checked: false,
         value: 252432
     },
-    {
-        name: "Joints Smoked",
+    'Joints Smoked':{
         checked: false,
         value: 420
     },
-    {
-        name: "Fucks Given",
+    'Fucks Given': {
         checked: false,
         value: 0
     }
-]
+}
 
 const messages = [
     {
@@ -36,7 +33,7 @@ const messages = [
     }
 ]
 
-const homeReducer = (state={stats:[]}, action) => {
+const homeReducer = (state={stats:stats, messages:messages}, action) => {
     switch(action.type) {
         case homeConstants.STAT_NEW:
             return {
@@ -53,10 +50,12 @@ const homeReducer = (state={stats:[]}, action) => {
                 ...state
             }
         case homeConstants.STAT_SELECT:
-            console.log(action)
+            console.log(state)
             return {
                 ...state,
-                [action.statName]: !action.checked
+                [action.statName]: {
+                    checked: action.checked
+                }
             }
         case homeConstants.STAT_INCREMENT:
             return {
