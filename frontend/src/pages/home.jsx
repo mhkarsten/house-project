@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
 
 import '../style/home.scss'
-import Timeline from '../components/timeline'
+// import Timeline from '../components/timeline'
 import MessageBoard from '../components/messageBoard'
 import Stats from '../components/stats'
-import homeActions from '../actions/homeActions'
+import { homeActions } from '../actions/homeActions';
 
 class Home extends React.Component {
     constructor(props) {
@@ -22,11 +22,16 @@ class Home extends React.Component {
                 <div>
                     <Typography variant='h3'>Stats</Typography>
                     <div className='statsBody'>
-                        <Stats stats = {this.props.stats}/>
+                        <Stats stats={this.props.stats}
+                               increaseStats={this.props.increaseStats}
+                               decreaseStats={this.props.decreaseStats}
+                               deleteStats={this.props.deleteStats}
+                               selectStat={this.props.selectStats}
+                               newStat={this.props.newStats}/>
                     </div>
                     <Typography variant='h3'>Message Board</Typography>
                     <div className='messageBody'>
-                        <MessageBoard messages={this.props.messages}/>
+                        <MessageBoard posts={this.props.posts} newPost={this.props.newPost}/>
                     </div>
                 </div>
             </main>
@@ -36,9 +41,21 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        messages: state.homeReducer.messages,
-        stats: state.homeReducer.stats
+        posts: state.posts,
+        stats: state.stats
     }
 }
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        increaseStats: () => {dispatch(homeActions.incrementStats())},
+        decreaseStats: () => {dispatch(homeActions.decrementStats())},
+        deleteStats: () => {dispatch(homeActions.deleteStats())},
+        selectStats: (statName, checked) => {dispatch(homeActions.selectStat(statName, checked))},
+        newStats: (statName, statValue) => {dispatch(homeActions.newStat(statName, statValue))},
+
+        newPost: (poster, postDate, postTitle, postBody) => {dispatch(homeActions.newPost(poster, postDate, postTitle, postBody))}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

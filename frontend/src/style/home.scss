@@ -7,11 +7,6 @@
     margin: 0.5vw;
 }
 
-.messageBody {
-    background-color: grey;
-    margin: 0.5vw;
-}   
-
 .incrementBox {
     width: 45%;
     display: flex;
@@ -59,4 +54,19 @@
         display: flex;
         flex-direction: column;
     }
+}
+
+.messageBoardBody {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.messageBody {
+    background-color: grey;
+    margin: 0.5vw;
+}   
+
+.RTEditor {
+    height: 250px;
+    width: 500px;
 }

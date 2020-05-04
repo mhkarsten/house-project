@@ -4,9 +4,11 @@ import Button from '@material-ui/core/Button'
 
 import React from 'react'
 import { connect } from 'react-redux'
-import Colors from 'colors'
+// import Colors from 'colors'
 import '../style/login.scss'
 import { loginActions } from '../actions/loginActions'
+import { homeActions } from '../actions/homeActions'
+
 
 class Login extends React.Component {
     constructor(props) {

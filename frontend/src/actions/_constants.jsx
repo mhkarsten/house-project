@@ -19,9 +19,9 @@ export const homeConstants = {
     STAT_SUCCESS: 'STAT_SUCCESS',
     STAT_FAILURE: 'STAT_FAILURE',
 
-    
-    POST_NEW:'',
-    POST_EDIT:'',
-    POST_FAILURE: '',
-    POST_SUCCESS: ''
+    POST_SELECT: 'POST_SELECT',
+    POST_NEW:'POST_NEW',
+    POST_EDIT:'POST_EDIT',
+    POST_FAILURE: 'POST_FAILURE',
+    POST_SUCCESS: 'POST_SUCCESS'
 }

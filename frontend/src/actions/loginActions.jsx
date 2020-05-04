@@ -8,7 +8,6 @@ export const loginActions = {
 }
 
 function login(userName, password) {
-
     if (userName === 'admin' && password === 'pass') {
         history.push('/home')
         sessionStorage.setItem('user', JSON.stringify('prestent'));

@@ -1,29 +1,18 @@
 import React from 'react'
 import { Typography, TextField, Button, Checkbox, FormGroup, FormControlLabel } from '@material-ui/core';
-import { useReducer } from 'react';
-import homeReducer from '../reducers/homeReducer';
-import {homeActions} from '../actions/homeActions'
+import { useState } from 'react';
+
 
 const Stats = (props) => {
-    const [stats, dispatch] = useReducer(homeReducer, props.stats)
-    function increase(event) {
-        dispatch(homeActions.incrementStats())
-    }
-
-    function decrease(event) {
-
-    }
-
-    function selectStat(event) {
-        dispatch(homeActions.selectStat(event.target.name, event.target.checked))
-    }
-
-    function newStat(event) {
-        dispatch(homeActions.newStat)
-    }
-
-    function deleteStat() {
-
+    const [newStatName, setNewStatName] = useState('')
+    const [newStatValue, setNewStatValue] = useState('')
+    function updateNewStat(event) {
+        console.log(event.target)
+        if (event.target.name === 'newStatName') {
+            setNewStatName(event.target.value)
+        } else {
+            setNewStatValue(event.target.value)
+        }
     }
 
     return (
@@ -31,40 +20,41 @@ const Stats = (props) => {
             <div className='incrementBox'>
                 <div>
                     <Typography>Create New Stat</Typography>
-                    <div className='createNewStat'>
+                    <form className='createNewStat' onSubmit={(e) => {
+                         e.preventDefault()
+                         props.newStat(newStatName, newStatValue)}}>
                         <div className='statValues'>
-                            <TextField id='standard-basic' label='Name of Stat'/>
-                            <TextField id='standard-number' label='Initial Value' type='number'/>
+                            <TextField id='standard-basic' label='Name of Stat' name='newStatName' onChange={updateNewStat}/>
+                            <TextField id='standard-number' label='Initial Value' name='newStatValue' type='number' onChange={updateNewStat}/>
                         </div>
-                        <Button onClick={newStat}>Create</Button>
-                    </div>
+                        <Button type='submit'>Create</Button>
+                    </form>
                 </div>
                 <div className='increaseExistingStat'>
                     <Typography>Manage Stats</Typography>
                     <Typography>Number of Stats: {0}</Typography>
                     <div className='increaseButtons'>
-                        <Button onClick={increase}>Increase</Button>
-                        <Button onClick={decrease}>Decrease</Button>
-                        <Button onClick={deleteStat}>Delete</Button>
+                        <Button onClick={() => {props.increaseStats()}}>Increase</Button>
+                        <Button onClick={() => {props.decreaseStats()}}>Decrease</Button>
+                        <Button onClick={() => {props.deleteStats()}}>Delete</Button>
                     </div>
                 </div>
             </div>
             <FormGroup className='statsBox'>
             {
-                Object.entries(stats).map((stat, index) => {
+                props.stats.stats.map((stat, index) => {
                     return (
-                        <div className='stat'>
-                            <Typography>{stat[1].value}</Typography>
+                        <div className='stat' key={stat.name}>
+                            <Typography>{stat.value}</Typography>
                             <FormControlLabel
                                 control = {
                                     <Checkbox
-                                        checked={stat[1].checked}
-                                        onChange={selectStat}
-                                        name={stat[0]}
+                                        checked={stat.checked}
+                                        onChange={(e) => {props.selectStat(e.target.name, e.target.checked)}}
+                                        name={stat.name}
                                     />
                                 }
-                                label={stat[0]}
-                                key={index}
+                                label={stat.name}
                             />
                         </div>
                     );
