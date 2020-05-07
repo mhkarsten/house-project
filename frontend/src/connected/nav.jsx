@@ -28,17 +28,14 @@ class Nav extends React.Component {
                     anchor='left'>
                     <Divider />
                     <List>
+                        <ListItem button component={Link} to='/home/account'>
+                            <ListItemText primary='Account'/>
+                        </ListItem>
                         <ListItem button component={Link} to='/home'>
                             <ListItemText primary='Home'/>
                         </ListItem>
                         <ListItem button component={Link} to='/home/builds'>
                             <ListItemText primary='Builds'/>
-                        </ListItem>
-                        <ListItem button component={Link} to='/home/lights'>
-                            <ListItemText primary='Lights'/>
-                        </ListItem>
-                        <ListItem button component={Link} to='/home/sat'>
-                            <ListItemText primary='Satalite'/>
                         </ListItem>
                         <ListItem button component={Link} to='/home/net'>
                             <ListItemText primary='Networking'/>

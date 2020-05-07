@@ -16,10 +16,18 @@ class Builds extends React.Component {
             <main className='buildBody' gutterButtom>
                 <Typography variant='h1'>BUILDS</Typography>
                 <div>
-                    My Builds
-                </div>
-                <div>
-                    Main Build Log
+                    <div>
+                        <Typography variant='h3'>All Builds</Typography>
+                        <div className='allBuildBox'>
+                            //info goes here//
+                        </div>
+                    </div>
+                    <div>
+                        <Typography variant='h3'>My Builds</Typography>
+                        <div className='myBuildBox'>
+                            //info goes here//
+                        </div>
+                    </div>
                 </div>
             </main>
         );

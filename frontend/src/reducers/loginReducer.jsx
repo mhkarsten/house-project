@@ -11,13 +11,11 @@ const loginReducer = (state = {}, action) => {
             return {
                 ...state,
                 loggingIn: true,
-                user: action.user
             };
         case loginConstants.LOGIN_SUCCESS:
             return {
                 ...state,
                 loggedIn: true,
-                user: action.user
             };
         case loginConstants.LOGIN_FAILURE:
             return {

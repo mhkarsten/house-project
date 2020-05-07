@@ -1,11 +1,16 @@
-.buildBody {
+.accountBody {
     margin: 1% 10% 0% 12%;
 }
 
 
-.allBuildBox {
+.infoBox {
     width: 100%;
     background-color: grey;
     margin: 0.5vw;
     height: 400px;
+}
+
+.profileIcon {
+    height: 200px !important;
+    width: 200px !important;
 }
