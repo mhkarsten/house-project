@@ -2,6 +2,7 @@ import React from 'react'
 import { Typography, Avatar, Tooltip, TextField, Button } from '@material-ui/core'
 import { connect } from 'react-redux'
 import '../style/account.scss'
+import Contribution from '../components/contribution'
 
 class Account extends React.Component {
     constructor(props) {
@@ -12,6 +13,8 @@ class Account extends React.Component {
             changeIcon: false
         }
     }
+
+    
 
     render() {
         return (
@@ -25,38 +28,38 @@ class Account extends React.Component {
                                 <Tooltip title='Change Avatar'>
                                     <Avatar alt='Remy Sharp' className='profileIcon' src={this.props.user.icon}/>
                                 </Tooltip>
-                            </div>
-                            <div>
                                 <Typography>{this.props.user.username}</Typography>
-                                <Typography>Change Password</Typography>
                             </div>
-                            <div>
-                                <div>
-                                    <Typography>Change Icon</Typography>
-                                    <form>
-                                        <TextField/>
-                                        <Button>Change</Button>
-                                    </form>
-                                </div>
-
-                                <div>
-                                    <Typography>Change Username</Typography>
-                                    <form>
-                                        <TextField/>
-                                        <TextField/>
-                                        <TextField/>
-                                        <Button>Change</Button>
-                                    </form>
-                                </div>
+                            <div className='changeIconBox'>
+                                <Typography>Change Icon</Typography>
+                                <form>
+                                    <TextField label='Link to New Image'/>
+                                    <Button>Change</Button>
+                                </form>
+                            </div>
+                            <div className='changePasswordBox'>
+                                <Typography>Change Password</Typography>
+                                <form>
+                                    <TextField label='Old Password'/>
+                                    <TextField label='New Password'/>
+                                    <TextField label='Repeat'/>
+                                    <Button>Change</Button>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <div>
                         <Typography variant='h3'>My Contributions</Typography>
                         <div className='contribBox'>
-                            <div>
+                            <Contribution>
 
-                            </div>
+                            </Contribution>
+                            <Contribution>
+
+                            </Contribution>
+                            <Contribution>
+
+                            </Contribution>
                         </div>
                     </div>
                 </div>
@@ -69,7 +72,9 @@ class Account extends React.Component {
 const mapStateToProps = (state) => {
     console.log(state)
     return {
-        user: state.user.user
+        user: state.user.user,
+        posts: state.posts.posts,
+        stats: state.stats.stats
     }
 }
 

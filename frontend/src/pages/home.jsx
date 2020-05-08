@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
 
 import '../style/home.scss'
-// import Timeline from '../components/timeline'
 import MessageBoard from '../components/messageBoard'
 import Stats from '../components/stats'
 import { homeActions } from '../actions/homeActions';
@@ -31,7 +30,8 @@ class Home extends React.Component {
                     </div>
                     <Typography variant='h3'>Message Board</Typography>
                     <div className='messageBody'>
-                        <MessageBoard posts={this.props.posts} newPost={this.props.newPost}/>
+                        <MessageBoard posts={this.props.posts} 
+                                      newPost={this.props.newPost}/>
                     </div>
                 </div>
             </main>
