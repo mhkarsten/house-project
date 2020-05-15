@@ -39,3 +39,10 @@ export const accountConstants = {
     ICON_SUCCESS: 'ICON_SUCCESS',
     ICON_FAILURE: 'ICON_FAILURE'
 }
+
+export const HUGOConstants = {
+    HUGO_ENTRY: '',
+    HUGO_ENTRY_FAILURE: '',
+    HUGO_ENTRY_SUCCESS: '',
+    HUGO_ENTRY_DELETE: ''
+}

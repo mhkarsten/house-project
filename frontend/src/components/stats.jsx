@@ -6,8 +6,8 @@ import { useState } from 'react';
 const Stats = (props) => {
     const [newStatName, setNewStatName] = useState('')
     const [newStatValue, setNewStatValue] = useState('')
+    
     function updateNewStat(event) {
-        console.log(event.target)
         if (event.target.name === 'newStatName') {
             setNewStatName(event.target.value)
         } else {

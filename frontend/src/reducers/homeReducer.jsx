@@ -159,7 +159,6 @@ export const statsReducer = (state={stats:stats}, action) => {
 export const postsReducer = (state={posts:posts}, action) => {
     switch(action.type) {
         case homeConstants.POST_NEW:
-            console.log(action)
             return {
                 ...state,
                 posts: [

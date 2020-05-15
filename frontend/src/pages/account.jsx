@@ -15,7 +15,8 @@ class Account extends React.Component {
             oldPassword: '',
             newPassword: '',
             newPasswordRepeat: '',
-            newIcon: ''
+            newIcon: '',
+            passwordErrorMessage: ''
         }
         this.changeIcon = this.changeIcon.bind(this)
         this.changePassword = this.changePassword.bind(this)
@@ -25,6 +26,13 @@ class Account extends React.Component {
 
     changePassword(event) {
         event.preventDefault()
+
+        if (this.state.newPassword == this.state.newPasswordRepeat) {
+            this.props.changePassword(this.state.newPassword)
+            this.setState({passwordErrorMessage: 'Your password has been changed'})
+        } else {
+            this.setState({passwordErrorMessage: 'Your passwords do not match'})
+        }
     }
 
     updatePassword(event) {
@@ -40,9 +48,11 @@ class Account extends React.Component {
 
     changeIcon(event) {
         event.preventDefault()
+        this.props.changeIcon(this.state.newIcon)
     }
 
     updateIcon(event) {
+
         this.setState({newIcon: event.target.value})
     }
     
@@ -64,12 +74,13 @@ class Account extends React.Component {
                             <div className='changeIconBox'>
                                 <Typography>Change Icon</Typography>
                                 <form onSubmit={this.changeIcon}>
-                                    <TextField label='Link to New Image'/>
+                                    <TextField label='Link to New Image' onChange={this.updateIcon}/>
                                     <Button type='submit'>Change</Button>
                                 </form>
                             </div>
                             <div className='changePasswordBox'>
                                 <Typography>Change Password</Typography>
+                                <Typography className='pwdErrorMessage'>{this.state.passwordErrorMessage}</Typography>
                                 <form onSubmit={this.changePassword}>
                                     <TextField label='Old Password' name='oldPwd' onChange={this.updatePassword}/>
                                     <TextField label='New Password' name='newPwd' onChange={this.updatePassword}/>
@@ -103,7 +114,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeIcon: (newIcon) => {dispatch(accountActions.changeIcon, newIcon)},
+        changeIcon: (newIcon) => {dispatch(accountActions.changeIcon(newIcon))},
         changePassword: (newPassword, oldPassword) => {dispatch(accountActions.changePassword(newPassword, oldPassword))},
     }
 }

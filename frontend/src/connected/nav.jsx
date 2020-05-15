@@ -34,6 +34,9 @@ class Nav extends React.Component {
                         <ListItem button component={Link} to='/home'>
                             <ListItemText primary='Home'/>
                         </ListItem>
+                        <ListItem button component={Link} to='/home/HUGO'>
+                            <ListItemText primary='HUGO'/>
+                        </ListItem>
                         <ListItem button component={Link} to='/home/builds'>
                             <ListItemText primary='Builds'/>
                         </ListItem>

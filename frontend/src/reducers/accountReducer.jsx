@@ -13,12 +13,18 @@ export const accountReducer = (state={user:user}, action) => {
         case accountConstants.PWD_CHANGE:
             return {
                 ...state,
-                password: action.newPassword
+                user: {
+                    ...state.user,
+                    password: action.newPassword
+                }
             }
         case accountConstants.ICON_CHANGE:
             return {
                 ...state,
-                icon: action.newIcon
+                user: {
+                    ...state.user,
+                    icon: action.newIcon
+                }
             }
         default:
             return state

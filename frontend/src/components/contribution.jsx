@@ -4,7 +4,6 @@ import { Typography } from '@material-ui/core'
 import '../style/contribution.scss'
 
 const Contribution = (props) => {
-    console.log(props.contribs)
     return (
         <div className='contribBody'>
             <div className='contribTitle'>
@@ -24,7 +23,6 @@ const Contribution = (props) => {
                     )
                 })
             }
-
         </div>
     );
 }
