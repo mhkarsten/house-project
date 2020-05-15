@@ -2,19 +2,23 @@ import { accountConstants } from '../actions/_constants'
 
 
 const user = {
-    username: 'admin',
-    icon: 'https://ronewzakcleveland.files.wordpress.com/2018/01/15155306479543.jpg?w=788&quality=80&strip=all&h=1024',
+    username: 'adminerino',
+    userId: 'admin',
+    password: '',
+    icon: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.uR3KgRq-sJayRblSz7i40QHaLF%26pid%3DApi&f=1',
 }
 
 export const accountReducer = (state={user:user}, action) => {
     switch(action.type) {
         case accountConstants.PWD_CHANGE:
             return {
-
+                ...state,
+                password: action.newPassword
             }
         case accountConstants.ICON_CHANGE:
             return {
-
+                ...state,
+                icon: action.newIcon
             }
         default:
             return state

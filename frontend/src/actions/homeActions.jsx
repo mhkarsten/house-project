@@ -1,7 +1,4 @@
-// import { history } from  '../store'
 import { homeConstants } from './_constants'
-import { store } from '../store'
-
 
 export const homeActions = {
     newStat,

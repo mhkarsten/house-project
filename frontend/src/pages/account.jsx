@@ -1,19 +1,50 @@
-import React from 'react'
+import React, {setState} from 'react'
 import { Typography, Avatar, Tooltip, TextField, Button } from '@material-ui/core'
 import { connect } from 'react-redux'
+
 import '../style/account.scss'
 import Contribution from '../components/contribution'
+import { userPostSelector, userStatSelector } from '../selectors/accountSelector'
+import { accountActions } from '../actions/accountActions'
 
 class Account extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            changePassword: false,
-            changeIcon: false
+            oldPassword: '',
+            newPassword: '',
+            newPasswordRepeat: '',
+            newIcon: ''
         }
+        this.changeIcon = this.changeIcon.bind(this)
+        this.changePassword = this.changePassword.bind(this)
+        this.updatePassword = this.updatePassword.bind(this)
+        this.updateIcon = this.updateIcon.bind(this)
     }
 
+    changePassword(event) {
+        event.preventDefault()
+    }
+
+    updatePassword(event) {
+        switch(event.target.name) {
+            case 'oldPwd':
+                this.setState({oldPassword: event.target.value})
+            case 'newPwd':
+                this.setState({newPassword: event.target.value})
+            case 'newPwdRepeat':
+                this.setState({newPasswordRepeat: event.target.value})
+        }   
+    }
+
+    changeIcon(event) {
+        event.preventDefault()
+    }
+
+    updateIcon(event) {
+        this.setState({newIcon: event.target.value})
+    }
     
 
     render() {
@@ -32,18 +63,18 @@ class Account extends React.Component {
                             </div>
                             <div className='changeIconBox'>
                                 <Typography>Change Icon</Typography>
-                                <form>
+                                <form onSubmit={this.changeIcon}>
                                     <TextField label='Link to New Image'/>
-                                    <Button>Change</Button>
+                                    <Button type='submit'>Change</Button>
                                 </form>
                             </div>
                             <div className='changePasswordBox'>
                                 <Typography>Change Password</Typography>
-                                <form>
-                                    <TextField label='Old Password'/>
-                                    <TextField label='New Password'/>
-                                    <TextField label='Repeat'/>
-                                    <Button>Change</Button>
+                                <form onSubmit={this.changePassword}>
+                                    <TextField label='Old Password' name='oldPwd' onChange={this.updatePassword}/>
+                                    <TextField label='New Password' name='newPwd' onChange={this.updatePassword}/>
+                                    <TextField label='Repeat' name='newPwdRepeat' onChange={this.updatePassword}/>
+                                    <Button type='submit'>Change</Button>
                                 </form>
                             </div>
                         </div>
@@ -51,15 +82,8 @@ class Account extends React.Component {
                     <div>
                         <Typography variant='h3'>My Contributions</Typography>
                         <div className='contribBox'>
-                            <Contribution>
-
-                            </Contribution>
-                            <Contribution>
-
-                            </Contribution>
-                            <Contribution>
-
-                            </Contribution>
+                            <Contribution type='stats' contribs={this.props.stats}/>
+                            <Contribution type='posts' contribs={this.props.posts}/>
                         </div>
                     </div>
                 </div>
@@ -70,17 +94,17 @@ class Account extends React.Component {
 
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         user: state.user.user,
-        posts: state.posts.posts,
-        stats: state.stats.stats
+        posts: userPostSelector(state),
+        stats: userStatSelector(state)
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        changeIcon: (newIcon) => {dispatch(accountActions.changeIcon, newIcon)},
+        changePassword: (newPassword, oldPassword) => {dispatch(accountActions.changePassword(newPassword, oldPassword))},
     }
 }
 

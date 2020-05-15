@@ -1,27 +1,33 @@
 import { homeConstants } from '../actions/_constants'
 const stats = [
     {
-        name: 'coronaCases',
+        title: 'Jazz',
+        userId: 'admin',
+        time: '26/13/56', 
         checked: false,
-        value: 252432
+        value: 1000,
     },
     {
-        name: 'Joints Smoked',
+        title: 'Fucks Given',
+        userId: 'admin',
+        time: '34/64/11', 
         checked: false,
-        value: 420
+        value: 0,
     },
     {
-        name: 'Fucks Given', 
+        title: 'joints smoked',
+        userId: 'daniel',
+        time: '12/53/77', 
         checked: false,
-        value: 0
+        value: 420,
     }
 ]
 
 const posts = [
     {
-        sender: 'Daniel',
-        time: '12/3/19',
         title: 'Hugo is unacceptable',
+        userId: 'Daniel',
+        time: '12/3/19',
         body: [
             {
               children: [
@@ -52,9 +58,9 @@ const posts = [
           ]
     },
     {
-        sender: 'Peter',
-        time: '24/8/17',
         title: 'Hugo will be hung',
+        userId: 'admin',
+        time: '24/8/17',
         body: [
             {
               type: 'title',
@@ -72,9 +78,9 @@ const posts = [
           ]
     },
     {
-        sender: 'Max',
-        time: '12/3/99',
         title: 'Hugo is a bastard',
+        userId: 'admin',
+        time: '12/3/99',
         body: [
             {
               children: [
