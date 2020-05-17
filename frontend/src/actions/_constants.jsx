@@ -41,8 +41,8 @@ export const accountConstants = {
 }
 
 export const HUGOConstants = {
-    HUGO_ENTRY: '',
-    HUGO_ENTRY_FAILURE: '',
-    HUGO_ENTRY_SUCCESS: '',
-    HUGO_ENTRY_DELETE: ''
+    HUGO_ENTRY: 'NEW_HUGO_ENTRY',
+    HUGO_ENTRY_FAILURE: 'HUGO_ENTRY_FAILURE',
+    HUGO_ENTRY_SUCCESS: 'HUGO_ENTRY_SUCCESS',
+    HUGO_ENTRY_DELETE: 'HUGO_ENTRY_DELETE'
 }

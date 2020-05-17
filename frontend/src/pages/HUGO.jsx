@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import Calendar from '../components/calendar/calendar'
+import { Typography } from '@material-ui/core';
 
 class HUGO extends React.Component {
     constructor(props) {
@@ -12,8 +14,22 @@ class HUGO extends React.Component {
 
     render() {
         return (
-            <main>
-                HUGO PREDICTOR
+            <main className='buildBody' gutterButtom>
+                <Typography variant='h1'>HUGO Predictor</Typography>
+                <div>
+                    <div>
+                        <Typography variant='h3'>Overview</Typography>
+                        <div className='allBuildBox'>
+                            <Calendar/>
+                        </div>
+                    </div>
+                    <div>
+                        <Typography variant='h3'>New Entry</Typography>
+                        <div className='myBuildBox'>
+                            //info goes here//
+                        </div>
+                    </div>
+                </div>
             </main>
         )
     }
