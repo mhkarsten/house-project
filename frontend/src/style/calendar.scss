@@ -1,0 +1,19 @@
+.monthPaginate {
+    display: flex;
+}
+
+.weekDayHeader {
+    display: flex;
+}
+
+.monthBody {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .monthCell {
+        width: 14%;
+        height: 20%;
+    }
+}

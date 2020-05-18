@@ -1,37 +1,42 @@
-
 import { HUGOConstants } from '../actions/_constants'
-
-var today = new Date();
-Math.ceil((today - new Date(today.getFullYear(),0,1)) / 86400000);
 
 const HUGOItems = [
     {
         id: '111',
-        year: '2020',
-        day: 138,
+        personID: 'HUGO',
+        date: new Date(2020, 4, 17),
+        start: '17',
         length: 7
     },
     {
         id: '112',
-        year: '2020',
-        day: 139,
+        personID: 'HUGO',
+        date: new Date(2020, 4, 18),
+        start: '18',
         length: 7
     },
     {        
         id: '113',
-        year: '2020',
-        day: 140,
+        personID: 'HUGO',
+        date: new Date(2020, 4, 19),
+        start: '18',
         length: 7
     },
     {
         id: '114',
-        year: '2020',
-        day: 141,
+        personID: 'HUGO',
+        date: new Date(2020, 4, 20),
+        start: '20',
         length: 7
     }
 ]
 
-export const HUGOReducer = (state={HUGOItems}, action) => {
+const HUGOFilter = {
+    type: 'year',
+    interval: {start: new Date(2020, 1, 1), end: new Date(2020, 1, 1)}
+}
+
+export const HUGOReducer = (state={HUGOItems, HUGOFilter}, action) => {
     switch(action.type) {
         case HUGOConstants.HUGO_ENTRY:
             return {
@@ -53,7 +58,15 @@ export const HUGOReducer = (state={HUGOItems}, action) => {
                     return !item.id == action.id
                 })
             }
-            default:
-                return state
+        case HUGOConstants.CHANGE_CALENDAR_VIEW:
+            return {
+                ...state,
+                HUGOFilter: {
+                    type: action.filterType, 
+                    interval: action.interval
+                }
+            }
+        default:
+            return state
     }
 }

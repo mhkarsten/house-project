@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Typography, Button, ButtonGroup, AppBar, Tabs, Tab } from '@material-ui/core'
 
+import '../../style/calendar.scss'
 import Month from './month'
 import Year from './year'
 import Week from './week'
@@ -8,9 +9,9 @@ import Week from './week'
 const Calendar = (props) => {
 
     const [selected, setSelected] = useState('week')
-
     function handleTabChange(event, newTab) {
         setSelected(newTab)
+
     }
 
     return (
@@ -29,7 +30,7 @@ const Calendar = (props) => {
                         <Week/>
                     </div>
                     <div hidden={selected !== 'month'}>
-                        <Month/>
+                        <Month currentDate={props.currentDate} HUGOEntries={props.HUGOEntries} changeView={props.changeView}/>
                     </div>
                     <div hidden={selected !== 'year'}>
                         <Year/>
