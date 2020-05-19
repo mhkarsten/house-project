@@ -44,3 +44,15 @@
     width: 30px;
     margin: 0px 10px 0px 10px;
 }
+
+.yearContent {
+    display: flex;
+    flex-wrap: wrap;
+    height: 400px;
+    width: 1000px;
+    flex-direction: column;
+    .yearCell {
+        height: 20%;
+        width: 2%;
+    }
+}

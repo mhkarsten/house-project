@@ -15,8 +15,9 @@ class HUGO extends React.Component {
             currentDate: new Date(2020, 4, 1)
         }
     }
-
+    
     render() {
+
         return (
             <main className='buildBody' gutterButtom>
                 <Typography variant='h1'>HUGO Predictor</Typography>
