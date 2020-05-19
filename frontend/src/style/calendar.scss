@@ -17,3 +17,30 @@
         height: 20%;
     }
 }
+
+.sampleBody {
+    display: flex;
+    width: 50%;
+}
+
+.colorSampleCellBody {
+    display: flex;
+    width: 200px;
+    height: 20px;
+
+    .colorSampleCell {
+        width: 10%;
+    }
+}
+
+.valueMinColor {
+    height: 30px;
+    width: 30px;
+    margin: 0px 10px 0px 10px;
+}
+
+.valueMaxColor {
+    height: 30px;
+    width: 30px;
+    margin: 0px 10px 0px 10px;
+}

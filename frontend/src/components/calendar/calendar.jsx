@@ -11,7 +11,6 @@ const Calendar = (props) => {
     const [selected, setSelected] = useState('week')
     function handleTabChange(event, newTab) {
         setSelected(newTab)
-
     }
 
     return (
@@ -30,7 +29,11 @@ const Calendar = (props) => {
                         <Week/>
                     </div>
                     <div hidden={selected !== 'month'}>
-                        <Month currentDate={props.currentDate} HUGOEntries={props.HUGOEntries} changeView={props.changeView}/>
+                        <Month currentDate={props.currentDate} 
+                               HUGOEntries={props.HUGOEntries} 
+                               changeView={props.changeView}
+                               changeColor={props.changeColor}
+                               HUGOColor={props.HUGOColor}/>
                     </div>
                     <div hidden={selected !== 'year'}>
                         <Year/>

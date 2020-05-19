@@ -24,7 +24,11 @@ class HUGO extends React.Component {
                     <div>
                         <Typography variant='h3'>Overview</Typography>
                         <div className='allBuildBox'>
-                            <Calendar currentDate={this.state.currentDate} HUGOEntries={this.props.HUGOEntries} changeView={this.props.changeCalendarView}/>
+                            <Calendar currentDate={this.state.currentDate} 
+                                      HUGOEntries={this.props.HUGOEntries} 
+                                      changeView={this.props.changeCalendarView}
+                                      changeColor={this.props.changeColor}
+                                      HUGOColor={this.props.HUGOColor}/>
                         </div>
                     </div>
                     <div>
@@ -41,13 +45,15 @@ class HUGO extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        HUGOEntries: HUGOEntriesSelector(state)
+        HUGOEntries: HUGOEntriesSelector(state),
+        HUGOColor: state.HUGOEntries.HUGOColor
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeCalendarView: (type, interval) => dispatch(HUGOActions.changeHugoView(type, interval))
+        changeCalendarView: (type, interval) => dispatch(HUGOActions.changeHugoView(type, interval)),
+        changeColor: (colorMax, colorMin) => dispatch(HUGOActions.setHugoColor(colorMax, colorMin))
     }
 }
 
