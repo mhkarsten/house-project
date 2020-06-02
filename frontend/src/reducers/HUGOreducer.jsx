@@ -3,74 +3,70 @@ import tinycolor from 'tinycolor2'
 
 const HUGOItems = [
     {
-        id: '111',
-        personID: 'HUGO',
-        date: new Date(2020, 4, 17),
-        start: '17',
-        length: 3
-    },
-    {
-        id: '112',
-        personID: 'HUGO',
-        date: new Date(2020, 4, 18),
-        start: '18',
-        length: 3
-    },
-    {        
-        id: '113',
-        personID: 'HUGO',
-        date: new Date(2020, 4, 19),
-        start: '18',
-        length: 7
-    },
-    {
-        id: '114',
-        personID: 'HUGO',
-        date: new Date(2020, 4, 20),
-        start: '20',
-        length: 12
-    },
-    {
-        id: '115',
-        personID: 'HUGO',
-        date: new Date(2020, 4, 21),
-        start: '20',
-        length: 9
-    },
-    {
-        id: '116',
-        personID: 'HUGO',
-        date: new Date(2020, 4, 22),
-        start: '20',
-        length: 7
-    },
-    {
-        id: '117',
-        personID: 'HUGO',
-        date: new Date(2020, 4, 23),
-        start: '20',
-        length: 5
-    },
-    {
-        id: '118',
-        personID: 'HUGO',
-        date: new Date(2020, 4, 12),
-        start: '20',
-        length: 2
-    },
-    {
         id: '119',
         personID: 'HUGO',
         date: new Date(2020, 4, 1),
-        start: '20',
-        length: 6
+        events: [{start: 15, end: 21}]
     },
     {
         id: '120',
         personID: 'HUGO',
         date: new Date(2020, 4, 2),
-        start: '20',
-        length: 8
+        events: [{start: 19, end: 23, overflow: 10}]
+    },
+    {
+        id: '121',
+        personID: 'HUGO',
+        date: new Date(2020, 4, 3),
+        events: [{start: 0, end: 4, overflow: 10}]
+    },
+    {
+        id: '118',
+        personID: 'HUGO',
+        date: new Date(2020, 4, 12),
+        events: [{start: 14, end: 16}]
+    },
+    {
+        id: '111',
+        personID: 'HUGO',
+        date: new Date(2020, 4, 17),
+        events: [{start: 5, end: 12}]
+    },
+    {
+        id: '112',
+        personID: 'HUGO',
+        date: new Date(2020, 4, 18),
+        events: [{start: 12, end: 15}]
+    },
+    {        
+        id: '113',
+        personID: 'HUGO',
+        date: new Date(2020, 4, 19),
+        events: [{start: 19, end: 23, overflow: 8}]
+    },
+    {
+        id: '114',
+        personID: 'HUGO',
+        date: new Date(2020, 4, 20),
+        events: [{start: 0, end: 2, overflow: 8}, {start: 12, end: 23}]
+    },
+    {
+        id: '115',
+        personID: 'HUGO',
+        date: new Date(2020, 4, 21),
+        events: [{start: 18, end: 23, overflow: 10}]
+    },
+    {
+        id: '116',
+        personID: 'HUGO',
+        date: new Date(2020, 4, 22),
+        events: [{start: 0, end: 3, overflow: 10}, {start: 19, end: 23, overflow: 8}]
+    },
+    {
+        id: '117',
+        personID: 'HUGO',
+        date: new Date(2020, 4, 23),
+        events: [{start: 0, end: 2, overflow: 8}, {start: 20, end: 23}]
     }
 ]
 
@@ -83,8 +79,8 @@ const HUGOColor = {
     colorMax: tinycolor('#3366ff'),
     colorMin: tinycolor('#ff0000'),
     
-    valueMax: Math.max.apply(Math, HUGOItems.map((entry) => { return entry.length; })),
-    valueMin: Math.min.apply(Math, HUGOItems.map((entry) => { return entry.length; }))
+    valueMax: Math.max.apply(Math, HUGOItems.map((entry) => { return entry.events.map((event) => { return event.end - event.start }).reduce((a, b) => a + b, 0)})),
+    valueMin: Math.min.apply(Math, HUGOItems.map((entry) => { return Math, entry.events.map((event) => { return event.end - event.start }).reduce((a, b) => a + b, 0)}))
 }
 
 export const HUGOReducer = (state={HUGOItems, HUGOFilter, HUGOColor}, action) => {

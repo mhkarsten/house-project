@@ -7,6 +7,7 @@ import { MaterialPicker } from 'react-color'
 const Month = (props) => {
     
     const [days, setDays] = useState([]) 
+    const [emptyDays, setEmptyDays] = useState([])
 
     const colorMax = props.HUGOColor.colorMax
     const colorMin = props.HUGOColor.colorMin
@@ -18,9 +19,12 @@ const Month = (props) => {
         setDays(genDays())
     }, [props])
 
+
+
     const genDays = () => {
         let days = []
         let calendarStart = startOfMonth(props.currentDate)
+        
         while (!isMonday(calendarStart)) {
             calendarStart = subDays(calendarStart, 1)
         }

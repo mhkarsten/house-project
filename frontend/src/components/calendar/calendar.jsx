@@ -55,8 +55,8 @@ const Calendar = (props) => {
     const setNewBounds = () => {
         let newStart, newEnd
         if (selected == 'week') {
-            newStart = startOfWeek(datePaginate)
-            newEnd = endOfWeek(newStart)
+            newStart = startOfWeek(datePaginate, { weekStartsOn: 1 })
+            newEnd = endOfWeek(newStart, { weekStartsOn: 1 })
         } else if(selected == 'month') {
 
             newStart =  startOfMonth(datePaginate)
@@ -102,9 +102,24 @@ const Calendar = (props) => {
 
     const setCellColor = (day) => {
         if (day.entry == null) {
+
             return {backgroundColor: colorMin}
         } else {
-            return {backgroundColor: tinycolor.mix(colorMin, colorMax, (day.entry.length/valueMax)*100)}
+            let totalLength = 0
+            day.entry.events.forEach((event) => {
+                let length = event.end - event.start
+                totalLength += length
+            })
+
+            return {backgroundColor: tinycolor.mix(colorMin, colorMax, (totalLength/valueMax)*100)}
+        }
+    }
+
+    const setHourCellColor = (event) => {
+        if (typeof(event.overflow) === 'undefined') {
+            return {backgroundColor: tinycolor.mix(colorMin, colorMax, ((event.end - event.start)/valueMax)*100)}
+        } else {
+            return {backgroundColor: tinycolor.mix(colorMin, colorMax, (event.overflow/valueMax)*100)}
         }
     }
 
@@ -153,22 +168,21 @@ const Calendar = (props) => {
                         </Tabs>
                     </AppBar>
                     <div hidden={selected !== 'week'}>
-                        <Week/>
+                        <Week currentDate={datePaginate}
+                              setHourCellColor={setHourCellColor}  
+                              HUGOEntries={props.HUGOEntries} 
+                              HUGOColor={props.HUGOColor}/>
                     </div>
                     <div hidden={selected !== 'month'}>
                         <Month currentDate={datePaginate}
                                setCellColor={setCellColor}  
                                HUGOEntries={props.HUGOEntries} 
-                               changeView={props.changeView}
-                               changeColor={props.changeColor}
                                HUGOColor={props.HUGOColor}/>
                     </div>
                     <div hidden={selected !== 'year'}>
                         <Year currentDate={datePaginate}
                               setCellColor={setCellColor} 
                               HUGOEntries={props.HUGOEntries} 
-                              changeView={props.changeView}
-                              changeColor={props.changeColor}
                               HUGOColor={props.HUGOColor}/>
                     </div>
                 </div>
