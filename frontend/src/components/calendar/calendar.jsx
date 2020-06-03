@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Typography, Button, ButtonGroup, AppBar, Tabs, Tab } from '@material-ui/core'
-import { subWeeks, subYears, endOfYear, endOfMonth, startOfMonth, addMonths, subMonths, format, addDays, isMonday, subDays, isEqual, addWeeks, addYears, startOfWeek, startOfYear, endOfWeek } from 'date-fns'
+import { Typography, Button, AppBar, Tabs, Tab } from '@material-ui/core'
+import { subWeeks, subYears, endOfYear, endOfMonth, startOfMonth, addMonths, subMonths, format, addDays, isMonday, subDays, addWeeks, addYears, startOfWeek, startOfYear, endOfWeek } from 'date-fns'
 import tinycolor from 'tinycolor2'
 import { MaterialPicker } from 'react-color'
 
@@ -22,14 +22,15 @@ const Calendar = (props) => {
     const colorMin = props.HUGOColor.colorMin
 
     const valueMax = props.HUGOColor.valueMax
-    const valueMin = props.HUGOColor.valueMin
 
     useEffect(() => {
         setNewBounds()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selected, datePaginate])
 
     useEffect(() => {
         props.changeView(selected, {start: startValue, end: endValue})
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [startValue, endValue])
 
     function handleTabChange(event, newTab) {
@@ -45,19 +46,19 @@ const Calendar = (props) => {
     }
 
     const changeColor = (event) => {
-        if (event.target.className == 'valueMaxColor') {
+        if (event.target.className === 'valueMaxColor') {
             setMaxChanger(!maxChanger)
-        } else if (event.target.className == 'valueMinColor') {
+        } else if (event.target.className === 'valueMinColor') {
             setMinChanger(!minChanger)
         }
     }
 
     const setNewBounds = () => {
         let newStart, newEnd
-        if (selected == 'week') {
+        if (selected === 'week') {
             newStart = startOfWeek(datePaginate, { weekStartsOn: 1 })
             newEnd = endOfWeek(newStart, { weekStartsOn: 1 })
-        } else if(selected == 'month') {
+        } else if(selected === 'month') {
 
             newStart =  startOfMonth(datePaginate)
             while (!isMonday(newStart)) {
@@ -65,7 +66,7 @@ const Calendar = (props) => {
             }
             newEnd = addDays(newStart, 34)
 
-        } else if(selected == 'year') {
+        } else if(selected === 'year') {
             newStart = startOfYear(datePaginate)
             newEnd = endOfYear(newStart)
         }
@@ -77,11 +78,11 @@ const Calendar = (props) => {
     const paginateInc = (event) => {
         let newDate
 
-        if (selected == 'week') {
+        if (selected === 'week') {
             newDate = addWeeks(datePaginate, 1)
-        } else if(selected == 'month') {
+        } else if(selected === 'month') {
             newDate = addMonths(datePaginate, 1)
-        } else if(selected == 'year') {
+        } else if(selected === 'year') {
             newDate = addYears(datePaginate, 1)
         }
         setDatePaginate(newDate)
@@ -90,18 +91,18 @@ const Calendar = (props) => {
     const paginateDec = (event) => { 
         let newDate
 
-        if (selected == 'week') {
+        if (selected === 'week') {
             newDate = subWeeks(datePaginate, 1)
-        } else if(selected == 'month') {
+        } else if(selected === 'month') {
             newDate = subMonths(datePaginate, 1)
-        } else if(selected == 'year') {
+        } else if(selected === 'year') {
             newDate = subYears(datePaginate, 1)
         }
         setDatePaginate(newDate)
     }
 
     const setCellColor = (day) => {
-        if (day.entry == null) {
+        if (day.entry === null) {
 
             return {backgroundColor: colorMin}
         } else {
@@ -145,7 +146,7 @@ const Calendar = (props) => {
                             {
                                 Array(10).fill().map((value, index) => {
                                     return (
-                                        <div className='colorSampleCell' style={{backgroundColor: tinycolor.mix(colorMin, colorMax, index*10)}}></div>
+                                        <div key={'colorKey'+index.toString()} className='colorSampleCell' style={{backgroundColor: tinycolor.mix(colorMin, colorMax, index*10)}}></div>
                                     )
                                 })
                             }

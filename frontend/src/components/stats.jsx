@@ -2,7 +2,6 @@ import React from 'react'
 import { Typography, TextField, Button, Checkbox, FormGroup, FormControlLabel } from '@material-ui/core';
 import { useState } from 'react';
 
-
 const Stats = (props) => {
     const [newStatName, setNewStatName] = useState('')
     const [newStatValue, setNewStatValue] = useState('')
@@ -21,8 +20,8 @@ const Stats = (props) => {
                 <div>
                     <Typography>Create New Stat</Typography>
                     <form className='createNewStat' onSubmit={(e) => {
-                         e.preventDefault()
-                         props.newStat(newStatName, newStatValue)}}>
+                          e.preventDefault()
+                          props.newStat(newStatName, props.user.userId, new Date(), newStatValue)}}>
                         <div className='statValues'>
                             <TextField id='standard-basic' label='Name of Stat' name='newStatName' onChange={updateNewStat}/>
                             <TextField id='standard-number' label='Initial Value' name='newStatValue' type='number' onChange={updateNewStat}/>
@@ -44,17 +43,17 @@ const Stats = (props) => {
             {
                 props.stats.stats.map((stat, index) => {
                     return (
-                        <div className='stat' key={stat.name}>
+                        <div className='stat' key={stat.time}>
                             <Typography>{stat.value}</Typography>
                             <FormControlLabel
                                 control = {
                                     <Checkbox
                                         checked={stat.checked}
                                         onChange={(e) => {props.selectStat(e.target.name, e.target.checked)}}
-                                        name={stat.name}
+                                        name={stat.title}
                                     />
                                 }
-                                label={stat.name}
+                                label={stat.title}
                             />
                         </div>
                     );

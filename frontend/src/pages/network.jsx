@@ -6,7 +6,6 @@ import '../style/network.scss'
 class Network extends React.Component {
     constructor(props) {
         super(props)
-
         this.state = {
 
         }
@@ -20,13 +19,13 @@ class Network extends React.Component {
                     <div>
                         <Typography variant='h3'>Network Info</Typography>
                         <div className='netInfoBox'>
-                            //info goes here//
+                            info goes here
                         </div>
                     </div>
                     <div>
                         <Typography variant='h3'>DNS stats</Typography>
                         <div className='DNSBox'>
-                            //info goes here//
+                            info goes here
                         </div>
                     </div>
                 </div>

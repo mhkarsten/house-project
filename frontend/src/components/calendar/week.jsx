@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { startOfYear, format, addDays, isMonday, subDays, isEqual, addMonths, getDaysInYear, startOfWeek } from 'date-fns'
+import React, { useState, useEffect } from 'react'
+import { format, addDays, isEqual, startOfWeek } from 'date-fns'
 
 const Week = (props) => {
 
@@ -7,18 +7,19 @@ const Week = (props) => {
 
     useEffect(() => {
         setDays(genDays())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props])
 
-    const genWeekDay = (entry) => {
+    const genWeekDay = (entry, keyPart) => {
         let hours = []
         let currentTime = 0
 
         while (currentTime < 24) {
-            hours.push(<div className='hourCell' style={{backgroundColor: props.HUGOColor.colorMin}}>hour: {currentTime}</div>)
+            hours.push(<div  key={(Math.random() + 1).toString(36).substring(7)} className='hourCell' style={{backgroundColor: props.HUGOColor.colorMin}}>hour: {currentTime}</div>)
             currentTime ++;
         }
 
-        if (entry == 'empty') {
+        if (entry === 'empty') {
             return hours
 
         } else {
@@ -26,7 +27,7 @@ const Week = (props) => {
                 let eventLength = event.end - event.start
 
                 for(let i = 0; i < eventLength + 1; i++) {
-                    hours[event.start + i] =  <div className='hourCell' style={props.setHourCellColor(event)}>HUGO IS HERE</div>
+                    hours[event.start + i] =  <div key={(Math.random() + 1).toString(36).substring(7)} className='hourCell' style={props.setHourCellColor(event)}>HUGO IS HERE</div>
                 }
             })
 
@@ -61,7 +62,7 @@ const Week = (props) => {
                 {
                     Array(6).fill().map((item, index) => {
                         return (
-                            <span>{format(addDays(startOfWeek(props.currentDate, {weekStartsOn: 1}), index), 'EEEE')}</span>
+                            <span key={'weekHeadKey' + index.toString()}>{format(addDays(startOfWeek(props.currentDate, {weekStartsOn: 1}), index), 'EEEE')}</span>
                         )
                     })
                 }
@@ -71,10 +72,10 @@ const Week = (props) => {
                     days.map((day, index) => {
 
                         return (
-                            <div className='weekDayCell'>
+                            <div className='weekDayCell' key={'weekCell' + day.toString() + index.toString()}>
                                 <div>{format(day.day, 'dd')}</div>
                                 {   
-                                    genWeekDay(day.entry)
+                                    genWeekDay(day.entry, )
                                 }
                             </div>
                         )

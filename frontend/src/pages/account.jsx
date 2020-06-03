@@ -1,4 +1,4 @@
-import React, {setState} from 'react'
+import React from 'react'
 import { Typography, Avatar, Tooltip, TextField, Button } from '@material-ui/core'
 import { connect } from 'react-redux'
 
@@ -27,7 +27,7 @@ class Account extends React.Component {
     changePassword(event) {
         event.preventDefault()
 
-        if (this.state.newPassword == this.state.newPasswordRepeat) {
+        if (this.state.newPassword === this.state.newPasswordRepeat) {
             this.props.changePassword(this.state.newPassword)
             this.setState({passwordErrorMessage: 'Your password has been changed'})
         } else {
@@ -39,10 +39,15 @@ class Account extends React.Component {
         switch(event.target.name) {
             case 'oldPwd':
                 this.setState({oldPassword: event.target.value})
+                return
             case 'newPwd':
                 this.setState({newPassword: event.target.value})
+                return
             case 'newPwdRepeat':
                 this.setState({newPasswordRepeat: event.target.value})
+                return
+            default:
+                return
         }   
     }
 

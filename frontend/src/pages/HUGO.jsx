@@ -19,7 +19,7 @@ class HUGO extends React.Component {
     render() {
 
         return (
-            <main className='buildBody' gutterButtom>
+            <main className='buildBody'>
                 <Typography variant='h1'>HUGO Predictor</Typography>
                 <div>
                     <div>
@@ -30,12 +30,6 @@ class HUGO extends React.Component {
                                       changeView={this.props.changeCalendarView}
                                       changeColor={this.props.changeColor}
                                       HUGOColor={this.props.HUGOColor}/>
-                        </div>
-                    </div>
-                    <div>
-                        <Typography variant='h3'>New Entry</Typography>
-                        <div className='myBuildBox'>
-                            //info goes here//
                         </div>
                     </div>
                 </div>

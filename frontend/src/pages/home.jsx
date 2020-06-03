@@ -26,7 +26,8 @@ class Home extends React.Component {
                                decreaseStats={this.props.decreaseStats}
                                deleteStats={this.props.deleteStats}
                                selectStat={this.props.selectStats}
-                               newStat={this.props.newStats}/>
+                               newStat={this.props.newStats}
+                               user={this.props.user}/>
                     </div>
                     <Typography variant='h3'>Message Board</Typography>
                     <div className='messageBody'>
@@ -42,7 +43,8 @@ class Home extends React.Component {
 const mapStateToProps = (state) => {
     return {
         posts: state.posts,
-        stats: state.stats
+        stats: state.stats, 
+        user: state.user
     }
 }
 
@@ -52,7 +54,7 @@ const mapDispatchToProps = (dispatch) => {
         decreaseStats: () => {dispatch(homeActions.decrementStats())},
         deleteStats: () => {dispatch(homeActions.deleteStats())},
         selectStats: (statName, checked) => {dispatch(homeActions.selectStat(statName, checked))},
-        newStats: (statName, statValue) => {dispatch(homeActions.newStat(statName, statValue))},
+        newStats: (title, userId, time, value) => {dispatch(homeActions.newStat(title, userId, time, value))},
 
         newPost: (poster, postDate, postTitle, postBody) => {dispatch(homeActions.newPost(poster, postDate, postTitle, postBody))}
     }

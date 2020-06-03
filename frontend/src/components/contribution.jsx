@@ -9,15 +9,15 @@ const Contribution = (props) => {
             <div className='contribTitle'>
                 <Typography className=''>Your </Typography>
                 {
-                    props.type == 'stats' ? <Typography>Stats</Typography>:
-                    props.type == 'posts' ? <Typography>Posts</Typography>: null
+                    props.type === 'stats' ? <Typography>Stats</Typography>:
+                    props.type === 'posts' ? <Typography>Posts</Typography>: null
                 }
             </div>
             {
                 props.contribs.map((contrib, index) => {
                     return (
                         <div className='contribEntry' key={contrib.time.toString()}>
-                            <Typography>{ contrib.title }: { props.type == 'stats' ? contrib.value : null }</Typography>
+                            <Typography>{ contrib.title }: { props.type === 'stats' ? contrib.value : null }</Typography>
                             <Typography>Posted At: { contrib.time }</Typography>
                         </div>
                     )

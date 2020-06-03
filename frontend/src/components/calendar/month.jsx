@@ -1,26 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { Typography, Button } from '@material-ui/core'
-import { endOfMonth, startOfMonth, addMonths, subMonths, format, addDays, isMonday, subDays, isEqual } from 'date-fns'
-import tinycolor from 'tinycolor2'
-import { MaterialPicker } from 'react-color'
+import { startOfMonth, format, addDays, isMonday, subDays, isEqual } from 'date-fns'
 
 const Month = (props) => {
     
     const [days, setDays] = useState([]) 
-    const [emptyDays, setEmptyDays] = useState([])
 
-    const colorMax = props.HUGOColor.colorMax
-    const colorMin = props.HUGOColor.colorMin
-
-    const valueMax = props.HUGOColor.valueMax
-    const valueMin = props.HUGOColor.valueMin
 
     useEffect(() => {
         setDays(genDays())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props])
 
-
-
+    //eventually make this a callback
     const genDays = () => {
         let days = []
         let calendarStart = startOfMonth(props.currentDate)
@@ -31,7 +22,7 @@ const Month = (props) => {
 
         for (let i = 0; i < 35; i++) {
             let pushed = false
-            props.HUGOEntries.forEach((entry, index)=>{
+            props.HUGOEntries.forEach((entry)=>{
                 if(isEqual(entry.date, addDays(calendarStart, i))) {
                     days.push({entry: entry, day: addDays(calendarStart, i)})
                     pushed = true
@@ -53,7 +44,7 @@ const Month = (props) => {
                     {
                         Array(7).fill().map((value, index) => {
                             return(
-                                <span>{format(addDays(new Date(), index), 'EEEE')}</span>
+                                <span key={'monthHeader' + index.toString()}>{format(addDays(new Date(), index), 'EEEE')}</span>
                             )
                         })
                     }
@@ -62,7 +53,7 @@ const Month = (props) => {
                     {
                         days.map((day, index) => {
                             return(
-                                <div className='monthCell' style={props.setCellColor(day)}>
+                                <div className='monthCell' style={props.setCellColor(day)} key={'month' + day.toString() + index.toString()}>
                                     <span className='monthCellLabel'>{format(day.day, 'd')}</span>
                                 </div>
                             )

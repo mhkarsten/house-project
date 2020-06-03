@@ -79,7 +79,9 @@ const HUGOColor = {
     colorMax: tinycolor('#3366ff'),
     colorMin: tinycolor('#ff0000'),
     
+    // eslint-disable-next-line
     valueMax: Math.max.apply(Math, HUGOItems.map((entry) => { return entry.events.map((event) => { return event.end - event.start }).reduce((a, b) => a + b, 0)})),
+    // eslint-disable-next-line
     valueMin: Math.min.apply(Math, HUGOItems.map((entry) => { return Math, entry.events.map((event) => { return event.end - event.start }).reduce((a, b) => a + b, 0)}))
 }
 
@@ -102,7 +104,7 @@ export const HUGOReducer = (state={HUGOItems, HUGOFilter, HUGOColor}, action) =>
             return {
                 ...state,
                 HUGOItems: state.HUGOItems.filter((item) => {
-                    return !item.id == action.id
+                    return !item.id === action.id
                 })
             }
         case HUGOConstants.CHANGE_CALENDAR_VIEW:

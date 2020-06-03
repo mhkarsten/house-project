@@ -7,11 +7,13 @@ const userSelector = state => state.user.user
 export const userPostSelector = createSelector(
     postSelector,
     userSelector,
-    (posts, user) => posts.filter((post, index) => {if(post.userId == user.userId){ return post }})
+    // eslint-disable-next-line
+    (posts, user) => {return posts.filter((post) => {if(post.userId === user.userId){ return post }})}
 )
 
 export const userStatSelector = createSelector(
     statSelector,
     userSelector,
-    (stats, user) => stats.filter((stat, index) => {if (stat.userId == user.userId) { return stat }})
+    // eslint-disable-next-line
+    (stats, user) => {return stats.filter((stat) => {if (stat.userId === user.userId) { return stat }})}
 )

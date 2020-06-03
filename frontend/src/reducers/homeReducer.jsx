@@ -99,8 +99,10 @@ export const statsReducer = (state={stats:stats}, action) => {
                 stats: [
                     ...state.stats,
                     {
-                        name: action.statName,
-                        value: parseInt(action.statValue),
+                        title: action.title,
+                        userId: action.userId,
+                        time: action.time,
+                        value: parseInt(action.value),
                         checked: false
                     }
                 ]
@@ -116,7 +118,7 @@ export const statsReducer = (state={stats:stats}, action) => {
             return {
                 ...state,
                 stats: state.stats.map((stat, index) => {
-                    if(stat.name === action.statName) {
+                    if(stat.title === action.statName) {
                         return {
                             ...stat,
                             checked: action.checked

@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import tinycolor from 'tinycolor2'
-import { MaterialPicker } from 'react-color'
 import { startOfYear, format, addDays, isMonday, subDays, isEqual, addMonths, getDaysInYear } from 'date-fns'
 
 const Year = (props) => {
 
     const [days, setDays] = useState([])
 
+
     useEffect(() => {
         setDays(genDays())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props])
 
     const genDays = () => {
@@ -44,7 +44,7 @@ const Year = (props) => {
                 {
                     Array(12).fill().map((value, index) => {
                         return(
-                            <span>{format(addMonths(startOfYear(props.currentDate), index), 'MMMM')}</span>
+                            <span key={'yearHeader' + index.toString()}>{format(addMonths(startOfYear(props.currentDate), index), 'MMMM')}</span>
                         )
                     })
                 }
@@ -54,12 +54,12 @@ const Year = (props) => {
                     days.map((day, index) => {
                         if (typeof day.day === 'string') {
                             return (
-                                <div className='emptyCell'>
+                                <div className='emptyCell' key={day.toString() + index.toString() + 'yearCont'}>
                                 </div>
                             )
                         } else {
                             return (
-                                <div className={'yearCell ' + index} style={props.setCellColor(day)} name={day.day.toString()}>
+                                <div key={day.toString() + index.toString() + 'yearCont'} className={'yearCell ' + index} style={props.setCellColor(day)} name={day.day.toString()}>
                                 </div>
                             )
                         }   

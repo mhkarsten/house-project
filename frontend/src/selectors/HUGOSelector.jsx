@@ -11,17 +11,21 @@ export const HUGOEntriesSelector = createSelector(
             case 'year':
                 return HUGOEntries
             case 'month':
+                // eslint-disable-next-line
                 return HUGOEntries.filter((entry, index) => {
                     if(isWithinInterval(entry.date, HUGOFilter.interval)){
                         return entry
                     }
                 })
             case 'week':
+                // eslint-disable-next-line
                 return HUGOEntries.filter((entry, index) => {
                     if(isWithinInterval(entry.date, HUGOFilter.interval)){
                         return entry
                     }
                 })
+            default:
+                return
         }
     }
 )

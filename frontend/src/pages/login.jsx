@@ -1,14 +1,11 @@
 
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-
 import React from 'react'
 import { connect } from 'react-redux'
-// import Colors from 'colors'
+
 import '../style/login.scss'
 import { loginActions } from '../actions/loginActions'
-import { homeActions } from '../actions/homeActions'
-
 
 class Login extends React.Component {
     constructor(props) {
@@ -54,19 +51,18 @@ class Login extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => { //READ STATE
+const mapStateToProps = (state) => {
     return {
         userName: state.userName,
         password: state.password
     }
 }
 
-const mapDispatchToProps = (dispatch) => { //WRITE STATE
+const mapDispatchToProps = (dispatch) => {
 
     return {
         login: (userName, password) => {dispatch(loginActions.login(userName, password))}
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps) (Login);

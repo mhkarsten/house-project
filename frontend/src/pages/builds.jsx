@@ -21,13 +21,13 @@ class Builds extends React.Component {
                     <div>
                         <Typography variant='h3'>All Builds</Typography>
                         <div className='allBuildBox'>
-                            //info goes here//
+                            info goes here
                         </div>
                     </div>
                     <div>
                         <Typography variant='h3'>My Builds</Typography>
                         <div className='myBuildBox'>
-                            //info goes here//
+                            info goes here
                         </div>
                     </div>
                 </div>

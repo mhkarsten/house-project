@@ -10,8 +10,8 @@ export const homeActions = {
     newPost
 }
 
-function newStat(statName, statValue) {
-    return {type: homeConstants.STAT_NEW, statName, statValue}
+function newStat(title, userId, time, value) {
+    return {type: homeConstants.STAT_NEW, title, userId, time, value}
 }
 
 function selectStat(statName, checked) {
