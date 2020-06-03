@@ -1,0 +1,72 @@
+.homeBody {
+    margin: 1% 10% 0% 12%;
+}
+
+.statsBody {
+    background-color: grey;
+    margin: 0.5vw;
+}
+
+.incrementBox {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    margin-right: 0.5vw;
+}
+
+.statsChangeBox {
+    display: flex;
+    padding: 2%;
+    height: 25vh;
+}
+
+.statsBox {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.stat {
+    display: flex;
+    width: 25%;
+    p {
+        width: 30%;
+        margin: 0;
+        align-self: center;
+    }
+}
+
+.createNewStat {
+    display: flex;
+
+    .statValues {
+        display: flex;
+        flex-direction: column;
+    
+    }
+}
+
+.increaseExistingStat {
+    display: flex;
+    flex-direction: column;
+
+    .increaseButtons {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.messageBoardBody {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.messageBody {
+    background-color: grey;
+    margin: 0.5vw;
+}   
+
+.RTEditor {
+    height: 250px;
+    width: 500px;
+}

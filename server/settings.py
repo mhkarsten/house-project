@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'graphene_django',
+    'server.house_model'
 ]
 
 MIDDLEWARE = [
@@ -80,6 +82,9 @@ DATABASES = {
     }
 }
 
+GRAPHENE = {
+    'SCHEMA': 'django_root.schema.schema'
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

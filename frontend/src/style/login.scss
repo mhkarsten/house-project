@@ -1,0 +1,30 @@
+body {
+    background-color: #313b72;
+}
+
+.loginForm {
+    margin-top: 15%;
+    margin-left: 40vw;
+    border-radius: 7px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    align-items: center;
+    box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    height: 35vh;
+
+    
+    h2 {
+        text-align: center;
+    }
+
+    .upField {
+        width: 80%;
+        margin: 3%;
+    }
+
+    .loginButton {
+        margin-top: 6%;
+    }
+}
