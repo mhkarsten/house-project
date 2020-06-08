@@ -4,16 +4,10 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
 
 [packages]
-flask = "*"
-flask-graphql = "*"
-flask-pymongo = "*"
-flask-jwt = "*"
-flask-cors = "*"
-graphene = "*"
-uwsigi = "*"
-uwsgi = "*"
+django = "*"
 
 [requires]
 python_version = "3.8"
