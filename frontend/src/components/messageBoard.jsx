@@ -56,9 +56,10 @@ const MessageBoard = (props) => {
                         <List>
                             {
                                 props.posts.posts.map((post, index) => {
+                                    console.log(post.title)
                                     return (
                                         <ListItem key={post.time} className='postListItem'>
-                                            <div title={post.time} onClick={selectPost}>{post.sender + ': :' + post.time + ': :' + post.title}</div>
+                                            <div title={post.time} onClick={selectPost}>{post.userId + ': :' + post.time + ': :' + post.title}</div>
                                         </ListItem>
                                     )
                                 })
