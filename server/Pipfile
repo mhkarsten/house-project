@@ -7,13 +7,15 @@ verify_ssl = true
 
 [packages]
 starlette = "*"
-pymongo = "*"
 graphene = "*"
 starlette-jwt = "*"
 uvicorn = "*"
 aiofiles = "*"
 ujson = "*"
 itsdangerous = "*"
+dnspython = "*"
+motor = "*"
+pymongo = "*"
 
 [requires]
 python_version = "3.8"
