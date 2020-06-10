@@ -1,12 +1,13 @@
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse
-from starlette.routing import Route
+from starlette.routing import Route, Mount
 from starlette.middleware import Middleware
 from starlette.graphql import GraphQLApp
+from starlette.staticfiles import StaticFiles
 
 from bson.json_util import dumps
 from json import loads
-
+import os
 import uvicorn
 
 import resources
@@ -19,6 +20,9 @@ middleware = [
 
 routes = [
     Route('/gethugos', routes.test_page),
+    Route('/home', routes.home), 
+    Route('/login', routes.login),
+    Mount('/static', StaticFiles(directory=os.path.join(settings.STATIC_ROOT, 'frontend/build')))
 ]
 
 startup = [

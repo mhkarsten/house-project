@@ -1,4 +1,5 @@
 import graphene
+import resources
 
 class Hugo(graphene.ObjectType):
     pass
