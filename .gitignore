@@ -356,3 +356,5 @@ MigrationBackup/
 virtualenv/
 
 .idea/workspace.xml
+
+server/.env
