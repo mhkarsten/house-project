@@ -1,8 +1,10 @@
-import settings
-import pymongo
+import motor.motor_asyncio
 import ssl
-from motor.motor_asyncio import AsyncIOMotorClient
-import asyncio
-loop = asyncio.get_event_loop()
-client = AsyncIOMotorClient(settings.DATABASE_URL, io_loop=loop)
-database = client['house']
+import settings
+
+database = None
+
+async def initialize_db():
+    global database
+    client = motor.motor_asyncio.AsyncIOMotorClient(settings.DATABASE_URL, ssl_cert_reqs=ssl.CERT_NONE)
+    database = client['house']
