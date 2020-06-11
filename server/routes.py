@@ -11,14 +11,7 @@ async def test_page(request):
         results.append(loads(dumps(doc)))
     return JSONResponse(results)
 
-async def login(request):
-    file = os.path.join(settings.STATIC_ROOT, 'login/build/index.html')
-    os.chdir(file)
-    print(os.listdir())
-    return FileResponse(file)
-
 async def home(request):
-    file = os.path.join(settings.STATIC_ROOT, 'frontend/build/index.html')
-    # os.chdir(file)
-    # print(os.listdir())
+    file = os.path.join(settings.STATIC_ROOT, 'build/index.html')
+
     return FileResponse(file)

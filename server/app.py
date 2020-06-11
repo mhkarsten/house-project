@@ -21,8 +21,7 @@ middleware = [
 routes = [
     Route('/gethugos', routes.test_page),
     Route('/home', routes.home), 
-    Route('/login', routes.login),
-    Mount('/static', StaticFiles(directory=os.path.join(settings.STATIC_ROOT, 'frontend/build')))
+    Mount('/static', StaticFiles(directory=os.path.join(settings.STATIC_ROOT, 'build/static/')))
 ]
 
 startup = [
