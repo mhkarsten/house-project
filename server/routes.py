@@ -13,5 +13,4 @@ async def test_page(request):
 
 async def home(request):
     file = os.path.join(settings.STATIC_ROOT, 'build/index.html')
-
     return FileResponse(file)

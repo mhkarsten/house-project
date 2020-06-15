@@ -12,7 +12,7 @@ import os
 import uvicorn
 import graphene
 
-from api.house import Query
+from api.graphql.api import schema
 import resources
 import settings
 import routes
@@ -26,7 +26,7 @@ middleware = [
 ]
 
 routes = [
-    Route('/api/house', GraphQLApp(schema = graphene.Schema(query = Query), executor_class = AsyncioExecutor)),
+    Route('/api/house', GraphQLApp(schema = schema, executor_class = AsyncioExecutor)),
 
     Route('/app', routes.home), 
     Mount('/static', StaticFiles(directory=os.path.join(settings.STATIC_ROOT, 'build/static/')))
