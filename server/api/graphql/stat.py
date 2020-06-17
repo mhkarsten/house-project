@@ -11,13 +11,19 @@ class Stat(graphene.ObjectType):
     value = graphene.Int()
 
     def resolve_title(parent, info):
-        return
+        return parent['title']
+    
+    def resolve_id(parent, info):
+        return parent['_id']
+
     def resolve_userId(parent, info):
-        return
+        return parent['user_id']
+
     def resolve_time(parent, info):
-        return
+        return parent['time']
+
     def resolve_value(parent, info):
-        return
+        return parent['value']
         
 class StatMutation(graphene.Mutation):
     def mutate(root, info):
@@ -25,6 +31,14 @@ class StatMutation(graphene.Mutation):
     pass
 
 class StatQuery(graphene.ObjectType):
-    def resolve(parent, info):
-        pass
+    stat = graphene.Field(Stat, statName=graphene.String())
+    stats = graphene.List(Stat, length=graphene.Int())
+
+    async def resolve_stat(parent, info):
+        val = await resources.database.stats.find_one({'title': statName})
+        return loads(dumps(val))
+
+    async def resolve_stats(parent, info):
+        val = await resources.database.stats.find().to_list(length=length)
+        return loads(dumps(val))
 

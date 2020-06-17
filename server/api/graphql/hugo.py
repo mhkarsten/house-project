@@ -11,11 +11,13 @@ class Event(graphene.ObjectType):
     overflow = graphene.Int()
 
     def resolve_start(parent, info):
-        pass
+        return parent['start']
+
     def resolve_end(parent, info):
-        pass
+        return parent['end']
+
     def resolve_overflow(parent, info):
-        pass
+        return parent['overflow']
 
 class Hugo(graphene.ObjectType):
     h_id = graphene.String()
@@ -23,19 +25,30 @@ class Hugo(graphene.ObjectType):
     time = graphene.String()
     events = graphene.List(Event)
 
-    def h_id():
-        pass
+    def resolve_id():
+        return parent['_id']
+
     def resolve_userId(parent, info):
-        pass
+        return parent['user_id']
+
     def resolve_time(parent, info):
-        pass
+        pass parent['time']
+
     def resolve_events(parent, info):
-        pass
+        return parent['events']
 
 class HugoMutation(graphene.Mutation):
     def mutate(root, info):
         pass
 
 class HugoQuery(graphene.ObjectType):
-    def resolve(parent, info):
-        pass
+    hugo = graphene.Field(Hugo, time=graphene.Date())
+    hugos = graphene.List(Hugo, length=graphene.Int())
+
+    async def resolve_hugo(parent, info):
+        val = await resources.database.HUGO.find_one({'time': time})
+        return loads(dumps(val))
+
+    async def resolve_hugos(parent, info):
+        val = await resources.database.HUGO.find().to_list(length=length)
+        return loads(dumps(val))

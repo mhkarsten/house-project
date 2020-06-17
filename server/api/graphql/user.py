@@ -27,13 +27,13 @@ class UserMutation(graphene.Mutation):
         pass
 
 class UserQuery(graphene.ObjectType):
-    user = graphene.Field(User)
-    users = graphene.List(User)
+    user = graphene.Field(User, userName=graphene.String())
+    users = graphene.List(User, length=graphene.Int())
 
-    async def resolve_user(parent, info):
-        val = await resources.database.users.find_one({'user_name': 'sentime'})
+    async def resolve_user(parent, info, userName):
+        val = await resources.database.users.find_one({'user_name': userName})
         return loads(dumps(val))
     
-    async def reolve_users(parent, info):
-        val = await resources.database.users.find().to_list(length=50)
+    async def resolve_users(parent, info, length):
+        val = await resources.database.users.find().to_list(length=length)
         return loads(dumps(val))
