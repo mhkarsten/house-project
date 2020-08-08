@@ -5,7 +5,7 @@ from api.graphql.post import PostQuery, PostMutation
 
 import graphene
 
-class Query(
+class RootQuery(
     HugoQuery,
     UserQuery,
     StatQuery,
@@ -13,15 +13,16 @@ class Query(
 ):
     pass
 
-# class Mutation(
-#     HugoMutation,
-#     UserMutation,
-#     StatMutation,
-#     PostMutation
-# ):
-#     pass
+class RootMutation(
+    HugoMutation,
+    StatMutation,
+    PostMutation,
+    UserMutation
+):
+    pass
 
 schema = graphene.Schema(
-    query = Query,
-    # mutation = Mutation
+    query = RootQuery,
+    mutation = RootMutation,
+    auto_camelcase=False,
 )

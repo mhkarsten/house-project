@@ -3,6 +3,7 @@ import ssl
 import settings
 
 database = None
+current_user_id = None
 
 async def initialize_db():
     global database

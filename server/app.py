@@ -26,13 +26,10 @@ middleware = [
 ]
 
 routes = [
-    Route('/api/house', GraphQLApp(schema = schema, executor_class = AsyncioExecutor)),
-
     Route('/app', routes.home), 
+    Route('/api/house', GraphQLApp(schema = schema, executor_class = AsyncioExecutor)),
     Mount('/static', StaticFiles(directory=os.path.join(settings.STATIC_ROOT, 'build/static/')))
 ]
-
-
 
 app = Starlette(debug=True, routes=routes, on_startup=startup, middleware=middleware)
 
